@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <filters name="listing_filters">
+            <filterInput name="sku">
+                <settings>
+                    <caption translate="true">SKU</caption>
+                    <label translate="true">SKU</label>
+                    <dataScope>sku</dataScope>
+                </settings>
+            </filterInput>
+        </filters>
+    </listingToolbar>
+</listing>
