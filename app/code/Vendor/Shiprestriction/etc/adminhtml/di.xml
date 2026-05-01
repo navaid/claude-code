@@ -35,4 +35,11 @@
             <argument name="resource" xsi:type="object">Amasty\Shiprestriction\Model\ResourceModel\Rule</argument>
         </arguments>
     </type>
+
+    <!-- Magento 2.4.8-p4 compat: Sanitizer::sanitize() now requires array; normalise select
+         options (e.g. CarriersMethodsOptions flat string format) before prepare() runs. -->
+    <type name="Magento\Ui\Component\Form\Element\Select">
+        <plugin name="Vendor_Shiprestriction_NormalizeSelectOptions"
+                type="Vendor\Shiprestriction\Plugin\Ui\Form\Element\SelectPlugin"/>
+    </type>
 </config>
