@@ -1,0 +1,46 @@
+{
+    "amasty_shiprestriction_rule": {
+        "column": {
+            "rule_id": true,
+            "is_active": true,
+            "for_admin": true,
+            "out_of_stock": true,
+            "all_stores": true,
+            "all_groups": true,
+            "name": true,
+            "coupon": true,
+            "discount_id": true,
+            "days": true,
+            "time_from": true,
+            "time_to": true,
+            "stores": true,
+            "cust_groups": true,
+            "message": true,
+            "carriers": true,
+            "methods": true,
+            "conditions_serialized": true,
+            "coupon_disable": true,
+            "discount_id_disable": true,
+            "show_restriction_message": true,
+            "custom_restriction_message": true,
+            "show_restriction_message_once": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "amasty_shiprestriction_attribute": {
+        "column": {
+            "attr_id": true,
+            "rule_id": true,
+            "code": true
+        },
+        "index": {
+            "AMASTY_SHIPRESTRICTION_ATTRIBUTE_RULE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_AE0541C428579FC141904B5D985FC509": true
+        }
+    }
+}

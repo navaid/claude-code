@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright © 2015 Amasty. All rights reserved.
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amshiprestriction>
+            <general>
+                <tax>0</tax>
+                <discount>0</discount>
+                <error_message>0</error_message>
+                <msi_algorithm>priority</msi_algorithm>
+            </general>
+        </amshiprestriction>
+    </default>
+</config>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author    Amasty Team
+ * @copyright Copyright (c) Amasty Ltd. ( http://www.amasty.com/ )
+ * @package   Amasty_Number
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Amasty_Shiprestriction" setup_version="2.6.0">
+        <sequence>
+            <module name="Amasty_Base" />
+            <module name="Magento_SalesRule" />
+            <module name="Amasty_CommonRules" />
+        </sequence>
+    </module>
+</config>

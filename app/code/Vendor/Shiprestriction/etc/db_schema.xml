@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="amasty_shiprestriction_rule"
+           resource="default"
+           engine="innodb"
+           comment="Amasty Shipping Restrictions Rule Table">
+        <column name="rule_id"
+                xsi:type="int"
+                unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Rule ID" />
+        <column name="is_active" xsi:type="boolean" nullable="false" default="false" comment="Is Active" />
+        <column name="for_admin" xsi:type="smallint" nullable="false" comment="Is Active In Admin Area" />
+        <column name="out_of_stock" xsi:type="smallint" nullable="false" comment="Apply the rule to" />
+        <column name="all_stores" xsi:type="boolean" nullable="false" default="false" comment="All Stores" />
+        <column name="all_groups" xsi:type="boolean" nullable="false" default="false" comment="All Groups" />
+        <column name="name" xsi:type="varchar" length="255" nullable="false" comment="Restriction Name" />
+        <column name="coupon" xsi:type="varchar" length="255" nullable="true" comment="Coupon" />
+        <column name="discount_id" xsi:type="varchar" length="255" nullable="false" comment="Discount ID" />
+        <column name="days" xsi:type="varchar" length="255" default="" nullable="true" comment="Days of the Week" />
+        <column name="time_from" xsi:type="int" unsigned="true" nullable="false" default="0" comment="Time From" />
+        <column name="time_to" xsi:type="int" unsigned="true" nullable="false" default="0" comment="Time To" />
+        <column name="stores" xsi:type="varchar" length="255" default="" nullable="false" comment="Apply In Stores" />
+        <column name="cust_groups"
+                xsi:type="varchar"
+                length="255"
+                default=""
+                nullable="false"
+                comment="Apply For Customer Groups" />
+        <column name="carriers" xsi:type="text" nullable="true" comment="Carriers" />
+        <column name="methods" xsi:type="text" nullable="true" comment="Methods" />
+        <column name="conditions_serialized" xsi:type="text" nullable="true" comment="Conditions" />
+        <column name="coupon_disable" xsi:type="varchar" length="255" nullable="true" comment="Coupon Codes" />
+        <column name="discount_id_disable"
+                xsi:type="varchar"
+                length="255"
+                nullable="false"
+                comment="Disable Discount ID" />
+        <column name="show_restriction_message"
+                xsi:type="boolean"
+                nullable="false"
+                default="false"
+                comment="Show Restriction Message" />
+        <column name="custom_restriction_message"
+                xsi:type="varchar"
+                length="500"
+                nullable="true"
+                onCreate="migrateDataFrom(message)"
+                comment="Custom Restriction Message" />
+        <column name="show_restriction_message_once"
+                xsi:type="boolean"
+                nullable="false"
+                default="false"
+                comment="Show Restriction Message Once" />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rule_id" />
+        </constraint>
+    </table>
+
+    <table name="amasty_shiprestriction_attribute"
+           resource="default"
+           engine="innodb"
+           comment="Amasty Shipping Restrictions Attribute Table">
+        <column name="attr_id"
+                xsi:type="int"
+                identity="true"
+                unsigned="true"
+                nullable="false"
+                comment="Attribute ID" />
+        <column name="rule_id" xsi:type="int" unsigned="true" nullable="false" comment="Rule ID" />
+        <column name="code" xsi:type="varchar" length="255" nullable="true" comment="Code" />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="attr_id" />
+        </constraint>
+
+        <index referenceId="rule_id" indexType="btree">
+            <column name="rule_id" />
+        </index>
+
+        <constraint xsi:type="foreign"
+                    referenceId="AMASTY_SHIPRESTRICTION_ATTRIBUTE_RULE_ID_AMASTY_SHIPRESTRICTION_RULE_RULE_ID"
+                    table="amasty_shiprestriction_attribute"
+                    column="rule_id"
+                    referenceTable="amasty_shiprestriction_rule"
+                    referenceColumn="rule_id"
+                    onDelete="CASCADE" />
+    </table>
+</schema>
